@@ -1,63 +1,45 @@
-class Cachorro:
-    def __init__(self, nome, peso, raca, cor, idade):
+class Pet:
+    def __init__(self, nome, peso, raca, cor):
         self.__nome = nome
         self.__peso = peso
         self.__raca = raca
         self.__cor = cor
-        self.__idade = idade
-        self.__especie = "Cachorro"
-    def getNome(self): return self.__nome
-    def getCor(self): return self.__cor
-    def getRaca(self): return self.__raca
-    def getPeso(self): return self.__peso
-    def getIdade(self): return self.__idade
-    def getEspecie(self): return self.__especie
 
-    def setNome(self, nome): self.__nome = nome
-    def setPeso(self, peso): self.__peso = peso
-    def setRaca(self, raca): self.__raca = raca
-    def setCor(self, cor): self.__cor = cor
-    def setIdade(self, idade): self.__idade = idade
+    def emitir_som(self):
+        raise NotImplementedError("Cada animal deve implementar seu próprio som.")
+    
+    def get_nome(self):
+        return self.__nome
+    
+    def get_cor(self):
+        return self.__cor
+    
+    def get_raca(self):
+        return self.__raca
+    
+    def get_peso(self):
+        return self.__peso
 
-class Gato:
-    def __init__(self, nome, peso, raca, cor, idade):
+    def set_nome(self, nome):
         self.__nome = nome
-        self.__peso = peso
-        self.__raca = raca
+    
+    def set_cor(self, cor):
         self.__cor = cor
-        self.__idade = idade
-        self.__especie = "Gato"
-
-    def getNome(self): return self.__nome
-    def getCor(self): return self.__cor
-    def getRaca(self): return self.__raca
-    def getPeso(self): return self.__peso
-    def getIdade(self): return self.__idade
-    def getEspecie(self): return self.__especie
-    def setNome(self, nome): self.__nome = nome
-    def setPeso(self, peso): self.__peso = peso
-    def setRaca(self, raca): self.__raca = raca
-    def setCor(self, cor): self.__cor = cor
-    def setIdade(self, idade): self.__idade = idade
-
-class Passaro:
-    def __init__(self, nome, peso, raca, cor, idade):
-        self.__nome = nome
-        self.__peso = peso
+    
+    def set_raca(self, raca):
         self.__raca = raca
-        self.__cor = cor
-        self.__idade = idade
-        self.__especie = "Passaro"
+    
+    def set_peso(self, peso):
+        self.__peso = peso
 
-    def getNome(self): return self.__nome
-    def getCor(self): return self.__cor
-    def getRaca(self): return self.__raca
-    def getPeso(self): return self.__peso
-    def getIdade(self): return self.__idade
-    def getEspecie(self): return self.__especie
+class Cachorro(Pet):
+    def emitir_som(self):
+        print("Auu Auu")
 
-    def setNome(self, nome): self.__nome = nome
-    def setPeso(self, peso): self.__peso = peso
-    def setRaca(self, raca): self.__raca = raca
-    def setCor(self, cor): self.__cor = cor
-    def setIdade(self, idade): self.__idade = idade
+class Gato(Pet):
+    def emitir_som(self):
+        print("Miauu Miauu")
+
+class Coelho(Pet):
+    def emitir_som(self):
+        print("Tchiki Tchiki")
