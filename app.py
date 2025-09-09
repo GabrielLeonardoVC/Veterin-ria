@@ -1,19 +1,33 @@
 import os
-from funcoes import cadastro, listar, atualizar
-pets={}
+
+from funcoes import *
+
 while True:
-    input(" ______________________\n |                    |\n |                    |\n |      Cadastro      |\n |                    |\n |____________________|\n\nRealize seu Cadastro a seguir:")
-    escolha=int(input("1º Cadastro\n2º Listar\n3º Atalizar o Cadastro\n4º Sair\n-->"))
-    if escolha==1:
-        cadastro(pets)
-    elif escolha==2:
-        listar(pets)
-    elif escolha==3:
-        atualizar(pets)
-    elif escolha==4:
-        print("Saindo...")
-        os.system("pause")
-        break
-    else:
-        print("Digite Novamente sua escolha...")
+    try:
+        os.system("cls")
+        print("BEM VINDO AO SISTEMA DE CADASTRO")
+        print("SELECIONE A OPÇÃO QUE DESEJA")
+        print("1 - CADASTRO")
+        print("2 - LISTAR")
+        print("3 - ATUALIZAR CADASTRO")
+        print("0 - SAIR")
+        escolha = int(input("--> "))
+
+        match escolha:
+            case 1:
+                cadastro()
+            case 2:
+                listar()
+            case 3:
+                atualizar()
+            case 0:
+                print("SAINDO...")
+                os.system("pause")
+                break
+            case _:
+                print("ESCOLHA INVALIDA")
+                os.system("pause")
+
+    except Exception as e:
+        print(f"Ocorreu um erro Inesperado: {e}")
         os.system("pause")

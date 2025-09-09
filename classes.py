@@ -1,45 +1,93 @@
-class Pet:
+class Clinica:
+    def __init__(self, nome, cidade):
+        self.__nome = nome
+        self.__cidade = cidade
+        self.__pets = {}
+    
+    def cadastroCachorro(self, nome, peso, raca, cor):
+        self.__pets[len(self.__pets) + 1] = Cachorro(nome=nome, peso=peso, raca=raca, cor=cor)
+
+    def cadastroGato(self, nome, peso, raca, cor):
+        self.__pets[len(self.__pets) + 1] = Gato(nome=nome, peso=peso, raca=raca, cor=cor)
+
+    def cadastroCoelho(self, nome, peso, raca, cor):
+        self.__pets[len(self.__pets) + 1] = Coelho(nome=nome, peso=peso, raca=raca, cor=cor)
+
+    def listar(self):
+        return self.__pets
+    
+    def alterarNome(self, id, nome):
+        self.__pets[id].setNome(nome)
+
+    def alterarPeso(self, id, peso):
+        self.__pets[id].setPeso(peso)
+
+    def alterarCor(self, id, cor):
+        self.__pets[id].setCor(cor)
+
+    def alterarRaca(self, id, raca):
+        self.__pets[id].setRaca(raca)
+
+class Animal:
     def __init__(self, nome, peso, raca, cor):
         self.__nome = nome
         self.__peso = peso
         self.__raca = raca
         self.__cor = cor
-
-    def emitir_som(self):
-        raise NotImplementedError("Cada animal deve implementar seu próprio som.")
     
-    def get_nome(self):
+    # ----------------- -------------------------
+    #Metodos GETs && SETs
+
+    def getNome(self):
         return self.__nome
     
-    def get_cor(self):
+    def getCor(self):
         return self.__cor
     
-    def get_raca(self):
+    def getRaca(self):
         return self.__raca
     
-    def get_peso(self):
+    def getPeso(self):
+        return self.__peso
+    
+    #-------------------------------------------
+
+    def setNome(self, nome):
+        self.__nome = nome
+        return self.__nome
+    
+    def setCor(self, cor):
+        self.__cor = cor
+        return self.__cor
+    
+    def setRaca(self, raca):
+        self.__raca = raca
+        return self.__raca
+
+    def setPeso(self, peso):
+        self.__peso = peso
         return self.__peso
 
-    def set_nome(self, nome):
-        self.__nome = nome
-    
-    def set_cor(self, cor):
-        self.__cor = cor
-    
-    def set_raca(self, raca):
-        self.__raca = raca
-    
-    def set_peso(self, peso):
-        self.__peso = peso
+class Cachorro(Animal):
+       
+    # ----------------- -------------------------
+    #Metodos
 
-class Cachorro(Pet):
-    def emitir_som(self):
-        print("Auu Auu")
+    def latir(self):
+        return "Au Au"  
+    
 
-class Gato(Pet):
-    def emitir_som(self):
-        print("Miauu Miauu")
+class Gato(Animal):    
+    # ----------------- -------------------------
+    #Metodos
 
-class Coelho(Pet):
-    def emitir_som(self):
-        print("Tchiki Tchiki")
+    def miar(self):
+        return "Miau Miau"
+    
+
+class Coelho(Animal):   
+    # ----------------- -------------------------
+    #Metodos
+
+    def chiar(self):
+        return "Chi Chi"
