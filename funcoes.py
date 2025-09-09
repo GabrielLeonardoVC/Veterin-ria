@@ -32,6 +32,7 @@ def cadastro(pets):
             print(f"\n{especienome} adicionado com sucesso!")
             os.system('cls')
             opcao=int(input("1º Adicionar outro pet\n4º Sair\n-->"))
+            os.system('cls')
             if opcao==4:
                 break
         else:
